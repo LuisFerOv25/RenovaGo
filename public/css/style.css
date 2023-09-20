@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f6f5f7;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+  text-align: start;
+}
+
+
+
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+.titulo-prod{
+  font-size: 14px;
+  font-weight: bold;
+}
+  
+  /* Estilos para el encabezado */
+  header {
+
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para el contenido principal */
+
+
+  footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+footer p {
+  margin: 10px 0;
+}
+  .inicial-txt{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 40px;
+   
+
+  }
+
+  .curved-line {
+    position: absolute;
+    bottom: 98px;
+    right: 10px;
+    width: 80%; 
+    height: 150px; 
+    background: linear-gradient(to bottom right, transparent 50%, #007bff 50%);
+    border-radius: 0 0 0 50%;
+    transform: translateY(50%);
+  }
+  a {
+    font-size: 12px; /* Cambia el tamaño de fuente según tus preferencias */
+  }
+  
+  span,p{
+    font-size: 12px; /* Cambia el tamaño de fuente según tus preferencias */
+    
+  }
+  .card{
+    border-radius: 20px;
+    background: rgb(245, 237, 220);
+  }
