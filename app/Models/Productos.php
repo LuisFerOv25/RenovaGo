@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Productos extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
         /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +24,8 @@ class Productos extends Model
         'descripcion',
         'cantidad',
         'precio',
-        'categoria'
+        'categoria',
+        'user_id'
     ];
     public function carritos(){
         return $this->morphedByMany(Carrito::class,'productable')->withPivot('cantidad');
@@ -43,5 +45,9 @@ class Productos extends Model
     {
         return $this->belongsTo(Categoria::class,'categoria')->withDefault();
     }
+    public function usuario()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 
 }

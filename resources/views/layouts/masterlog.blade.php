@@ -13,7 +13,6 @@
 </head>
 
     <body>
-
         <header>
             <nav class="navbar navbar-expand-sm bg-body-tertiary">
             <div class="container-fluid">
@@ -73,7 +72,7 @@
             </div>
                 
         @endif
-
+        <div id="notification" class="alert mx-3 invisible"></div>
         @yield('content')
         <footer>
             <p class="copyright text-center">2023 RenovaGo &copy Todos los derechos reservados</p>
@@ -82,7 +81,35 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+          <script>
+             import Echo from 'laravel-echo';
+
+            import Pusher from 'pusher-js';
+            window.Pusher = Pusher;
+
+            window.Echo = new Echo({
+                broadcaster: 'pusher',
+                key: import.meta.env.VITE_PUSHER_APP_KEY,
+                wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
+            wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
+                wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
+            forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
+            enabledTransports: ['ws', 'wss'],
+            });
+
+            Echo.private('notificacions').listen('CambioSesionUsuario',(e) =>{
+            const notificacion = document.getElementById('notification');
+            notificacion.innerText = e.message;
+            notificacion.classList.remove('invisible');
+            notificacion.classList.remove('alert-success');
+            notificacion.classList.remove('alert-warning');
+            notificacion.classList.add('alert-' + e.type);
+
+        });
+          </script>
+
         
+
     </body>
         
 </html>

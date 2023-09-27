@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('cantidad')->unsigned();
             $table->float('precio')->unsigned();
             $table->unsignedBigInteger('categoria');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
             $table->foreign('categoria')->references('id')->on('categorias');
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductoCarritoController;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('descargas', 'App\Http\Controllers\HomeController@descargas')->name('home.descargas');
+Route::get('cuenta/{usuario}/productos', 'App\Http\Controllers\ProductoController@misproductos')->name('producto.misproductos');
 
 
  Route::get('/cuenta', 'App\Http\Controllers\ProductoController@Cuenta')->name('cliente.cuenta');
@@ -93,3 +94,9 @@ Route::get('panel/empresa/{empresa}/editar', 'App\Http\Controllers\Panel\PanelCo
 
 Route::match(['put', 'patch'], 'panel/empresa/{empresa}', 'App\Http\Controllers\Panel\PanelController@actualizarEmpr')->name('panel.empr.actualizar');
 Route::delete('panel/empresa/{empresa}','App\Http\Controllers\Panel\PanelController@eliminar_empr')->name('panel.empr.eliminar');
+
+
+//Msj
+Route::get('/chat', 'App\Http\Controllers\ChatController@showChat')->name('chat.show');
+Route::post('/chat/message', 'App\Http\Controllers\ChatController@messageReceived')->name('chat.message');
+Route::post('/chat/greet/{user}', 'App\Http\Controllers\ChatController@greetReceived')->name('chat.greet');

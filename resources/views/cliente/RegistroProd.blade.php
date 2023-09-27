@@ -60,7 +60,7 @@
                             <br>
                             <div class="row text-center">
                                 <div class="col ">
-                                    <a href="{{ url()->previous() }}" class="btn btn-primary">Volver Atrás</a>
+                                    <a href="{{ url()->previous() }}" class="btn btn-primary">Atrás</a>
 
                                     </a>
                                     <button type="submit" class="btn btn-sm agregar">

@@ -10,7 +10,6 @@
           
       @else
           
-      
     <!-- Contenido -->
     <div class="container">
       <div class="row row-cols-2 row-cols-md-5 g-4">

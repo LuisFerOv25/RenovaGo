@@ -6,13 +6,14 @@ use App\Models\Productos;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 class ProductoController extends Controller
 {
-public function __construct(){
-    $this->middleware('auth');
-}
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
     public function index(){
         
@@ -26,14 +27,17 @@ public function __construct(){
         return view('cliente.RegistroProd', ['usuario' => $usuario]);
     }
     public function creacion_prod(ProductoRequest $request){
-        // $producto= Productos::create([
-        //     'nombre' => request()->nombre,
-        //     'descripcion' => request()->descripcion,
-        //     'cantidad' => request()->cantidad,
-        //     'precio' => request()->precio,
-        // ]);
+        $usuario = Auth::user();
+         $producto= Productos::create([
+             'nombre' => request()->nombre,
+             'descripcion' => request()->descripcion,
+             'cantidad' => request()->cantidad,
+             'precio' => request()->precio,
+             'categoria' => request()->categoria,
+             'user_id' => $usuario->id,
+         ]);
 
-        $producto = Productos::create(request()->all());
+ 
         foreach ($request->images as $image) {
             $producto->images()->create([
                 'path' => 'images/' . $image->store('productos', 'images'),
@@ -50,6 +54,15 @@ public function __construct(){
 
         ]);
     }
+
+    public function misproductos($id){
+
+    $usuario = User::find($id);
+    $productos = $usuario->productos;
+
+    return view('cliente.misproductos', ['usuario' => $usuario, 'productos' => $productos]);
+     }
+
     public function editar( Productos $producto){
         return view('cliente.EditaProd')->with([
             'producto' => $producto,
