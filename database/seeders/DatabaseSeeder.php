@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Carrito;
 use App\Models\Categoria;
 use App\Models\Empresa;
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $administrador = Admin::factory(20)->create();
+
         $categorias = [
             'Electrónica',
             'Ropa y Moda',

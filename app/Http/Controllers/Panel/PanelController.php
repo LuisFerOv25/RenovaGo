@@ -12,6 +12,11 @@ use Illuminate\Database\QueryException;
 
 class PanelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         return view('admin.dashboard');
@@ -63,12 +68,8 @@ class PanelController extends Controller
          }
     }
 
-    public function admin()
-    {
-        return view('admin.adm_admin');
-    }
 
- 
+
     public function editarUser( User $usuario){
         return view('admin.edita_user')->with([
             'usuario' => $usuario,

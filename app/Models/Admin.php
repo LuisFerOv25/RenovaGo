@@ -12,10 +12,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $guard = 'users';
+    protected $guard = 'admins';
+
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +29,7 @@ class User extends Authenticatable
         'direccion',
         'email',
         'celular',
+        'cargo',
         'password',
     ];
 

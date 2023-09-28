@@ -213,7 +213,10 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-
+                        <form method="POST" action="{{route('admin.logout')}}">
+                            @csrf
+                            <button type="submit" class="nav-link btn-sm">Cerrar sesión</button>
+                          </form>
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
@@ -366,8 +369,10 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    {{-- <a class="btn btn-primary" href="login.html">Logout</a> --}}
+                    
                 </div>
+
             </div>
         </div>
     </div>

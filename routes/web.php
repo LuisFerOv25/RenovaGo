@@ -63,38 +63,51 @@ Route::resource('orden','App\Http\Controllers\OrdenController')->only(['create',
 
 Route::resource('orden.pago','App\Http\Controllers\OrdenPagoController')->only(['create','store']);
 
-//Rutas de admin
+Route::middleware(['admin.auth'])->group(function () {
 
-Route::resource('panel','App\Http\Controllers\Panel\PanelController')->only(['index']);
+    Route::resource('panel','App\Http\Controllers\Panel\PanelController')->only(['index']);
 
-Route::get('panel/usuario', 'App\Http\Controllers\Panel\PanelController@usuario')->name('panel.usuario');
+    Route::get('panel/usuario', 'App\Http\Controllers\Panel\PanelController@usuario')->name('panel.usuario');
 
-Route::get('panel/empresa', 'App\Http\Controllers\Panel\PanelController@empresa')->name('panel.empresa');
+    Route::get('panel/empresa', 'App\Http\Controllers\Panel\PanelController@empresa')->name('panel.empresa');
 
-//producto
-Route::get('panel/producto', 'App\Http\Controllers\Panel\PanelController@producto')->name('panel.producto');
-Route::delete('panel/producto/{producto}','App\Http\Controllers\Panel\PanelController@eliminar')->name('panel.prod.eliminar');
+    Route::get('panel/admin/registro', 'App\Http\Controllers\AdminController@registro')->name('panel.registro.admin');
 
-Route::get('panel/admin', 'App\Http\Controllers\Panel\PanelController@admin')->name('panel.admin');
+    Route::post('panel/admin/registro', 'App\Http\Controllers\AdminController@autenticar')->name('panel.autenticar.admin');
 
-Route::get('panel/producto/{producto}/editar', 'App\Http\Controllers\Panel\PanelController@editar')->name('panel.prod.editar');
+    //producto
+    Route::get('panel/producto', 'App\Http\Controllers\Panel\PanelController@producto')->name('panel.producto');
+    Route::delete('panel/producto/{producto}','App\Http\Controllers\Panel\PanelController@eliminar')->name('panel.prod.eliminar');
 
-Route::match(['put', 'patch'], 'panel/producto/{producto}', 'App\Http\Controllers\Panel\PanelController@actualizar')->name('panel.prod.actualizar');
+    Route::get('panel/producto/{producto}/editar', 'App\Http\Controllers\Panel\PanelController@editar')->name('panel.prod.editar');
 
-
-//usuario
-Route::get('panel/usuario/{usuario}/editar', 'App\Http\Controllers\Panel\PanelController@editarUser')->name('panel.user.editar');
-
-Route::match(['put', 'patch'], 'panel/usuario/{usuario}', 'App\Http\Controllers\Panel\PanelController@actualizarUser')->name('panel.user.actualizar');
-Route::delete('panel/usuario/{usuario}','App\Http\Controllers\Panel\PanelController@eliminar_user')->name('panel.user.eliminar');
+    Route::match(['put', 'patch'], 'panel/producto/{producto}', 'App\Http\Controllers\Panel\PanelController@actualizar')->name('panel.prod.actualizar');
 
 
-//empresa
-Route::get('panel/empresa/{empresa}/editar', 'App\Http\Controllers\Panel\PanelController@editarEmpr')->name('panel.empr.editar');
+    //usuario
+    Route::get('panel/usuario/{usuario}/editar', 'App\Http\Controllers\Panel\PanelController@editarUser')->name('panel.user.editar');
 
-Route::match(['put', 'patch'], 'panel/empresa/{empresa}', 'App\Http\Controllers\Panel\PanelController@actualizarEmpr')->name('panel.empr.actualizar');
-Route::delete('panel/empresa/{empresa}','App\Http\Controllers\Panel\PanelController@eliminar_empr')->name('panel.empr.eliminar');
+    Route::match(['put', 'patch'], 'panel/usuario/{usuario}', 'App\Http\Controllers\Panel\PanelController@actualizarUser')->name('panel.user.actualizar');
+    Route::delete('panel/usuario/{usuario}','App\Http\Controllers\Panel\PanelController@eliminar_user')->name('panel.user.eliminar');
 
+
+    //empresa
+    Route::get('panel/empresa/{empresa}/editar', 'App\Http\Controllers\Panel\PanelController@editarEmpr')->name('panel.empr.editar');
+
+    Route::match(['put', 'patch'], 'panel/empresa/{empresa}', 'App\Http\Controllers\Panel\PanelController@actualizarEmpr')->name('panel.empr.actualizar');
+    Route::delete('panel/empresa/{empresa}','App\Http\Controllers\Panel\PanelController@eliminar_empr')->name('panel.empr.eliminar');
+
+    //Admin
+
+    Route::get('panel/admin', 'App\Http\Controllers\AdminController@mostrarAdmin')->name('panel.admin');
+    Route::get('panel/admin/{admin}/editar', 'App\Http\Controllers\AdminController@editarAdmin')->name('panel.adm.editar');
+    Route::match(['put', 'patch'], 'panel/admin/{admin}', 'App\Http\Controllers\AdminController@actualizarAdmin')->name('panel.adm.actualizar');
+    Route::delete('panel/admin/{admin}','App\Http\Controllers\AdminController@eliminarAdmin')->name('panel.adm.eliminar');
+
+    Route::post('panel/logout', 'App\Http\Controllers\AdminController@logout')->name('admin.logout');
+
+
+});
 
 //Msj
 Route::get('/chat', 'App\Http\Controllers\ChatController@showChat')->name('chat.show');

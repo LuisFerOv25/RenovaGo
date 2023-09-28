@@ -9,7 +9,7 @@
                     <br>
                     @empty ($usuarios))
                         <div class="alert alert-warning">
-                        No hay productos para mostrar
+                        No hay usuarios para mostrar
                         </div>
                     @else
                     <!-- DataTales Example -->
