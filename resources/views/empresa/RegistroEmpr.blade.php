@@ -9,25 +9,44 @@
 </head>
 
 <body>
+		@if (@isset($errors) && $errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
+		@if (session()->has('success'))
 
+			<div class="alert alert-success">
+				{{session()->get('success')}}
+			</div>
+				
+		@endif
 	<div class="container" id="container">
 
 		<div class="form-container sign-in-container">
-			<form action="#">
-				<h1>Registrar empresa</h1>
-				<br>
-				<input type="text" placeholder="Nombre de la empresa" />
-				<input type="text" placeholder="Razon social" />
-				<input type="text" placeholder="Direccion" />
-				<input type="email" placeholder="Correo Electrónico" />
-				<input type="text" placeholder="Celular" />
-				<input type="password" placeholder="Contraseña" />
-				<input type="password" placeholder="Confirmar Contraseña" />
+			<form method="POST" action="{{route('empresa.creacion_empr')}}" enctype="multipart/form-data">
+				@csrf
+				<h2>Registrar empresa</h2>
+				<input type="number" name="nit" placeholder="Nit de empresa" />
+				<input type="text" name="nombre" placeholder="Nombre de la empresa" />
+				<input type="text" name="razon" placeholder="Razon social" />
+				<input type="text" name="direccion" placeholder="Direccion" />
+				<input type="email" name="email" placeholder="Correo Electrónico" />
+				<input type="text" name="celular" placeholder="Celular" />
+				<input type="password" name="password" placeholder="Contraseña" />
+				<input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" />
+				<div class="custom-file">
+					<input type="file" accept="image/*" name="images[]" class="custom-file-input" multiple>
+				</div>
 				<br>
 				<button>Registrate</button>
 				<br>
-				<span>Ya tienes cuenta ? <a class="a-en" href="login.html">Iniciar sesión</a>.</span>
-				<br>
+				<span>Ya tienes cuenta ? <a class="a-en" href="{{route('cliente.login')}}">Iniciar sesión</a>.</span>
+				
 				<a>Al continuar, aceptas los Términos y Condiciones</a>
 
 			</form>

@@ -47,22 +47,12 @@ class AdminController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        
-        // $reglas = [
-        //     'cedula' => 'required',
-        //     'nombre' => 'required|max:300',
-        //     'direccion' => 'required',
-        //     'email' => 'required|email',
-        //     'celular' => 'required|max:13',
-        //     'password' => 'required|confirmed',
 
-        // ];
-        // request()->validate($reglas);
         $admin = Admin::create(request()->all());
         auth()->login($admin);
         foreach ($request->images as $image) {
             $admin->image()->create([
-                'path' => 'images/' . $image->store('usuarios', 'images'),
+                'path' => 'images/' . $image->store('admin', 'images'),
             ]);
         }
        return redirect()->to('/panel/admin/registro')->withSuccess('Administrador creado con exito');

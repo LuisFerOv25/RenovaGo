@@ -48,7 +48,7 @@
                 <input type="password" name="password" placeholder="Contraseña" value="{{old('password')}}"/>
 				
 				<input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" />
-				</select>
+			
 				<div class="custom-file">
 					<input type="file" accept="image/*" name="images[]" class="custom-file-input" multiple>
 				</div>

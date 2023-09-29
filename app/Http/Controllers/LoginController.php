@@ -32,7 +32,11 @@ class LoginController extends Controller
         } elseif (Auth::guard('web')->attempt($credentials)) {
             // Iniciar sesión como usuario regular
             return redirect()->route('producto.index');
+        }elseif (Auth::guard('empresa')->attempt($credentials)) {
+            // Iniciar sesión como usuario regular
+            return redirect()->route('empresa.cuenta');
         }
+        
     
         // Si no se puede iniciar sesión, redirigir de nuevo a la página de inicio de sesión con un mensaje de error
         return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([

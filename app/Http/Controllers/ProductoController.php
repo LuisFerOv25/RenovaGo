@@ -6,6 +6,7 @@ use App\Models\Productos;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Empresa;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -26,7 +27,10 @@ class ProductoController extends Controller
 
         return view('cliente.RegistroProd', ['usuario' => $usuario]);
     }
-    public function creacion_prod(ProductoRequest $request){
+
+
+
+    public function creacion_prod_usuario(ProductoRequest $request){
         $usuario = Auth::user();
          $producto= Productos::create([
              'nombre' => request()->nombre,
@@ -62,6 +66,7 @@ class ProductoController extends Controller
 
     return view('cliente.misproductos', ['usuario' => $usuario, 'productos' => $productos]);
      }
+
 
     public function editar( Productos $producto){
         return view('cliente.EditaProd')->with([

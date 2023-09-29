@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nit')->unique()->notNullable();
             $table->string('nombre',420);
-            $table->string('razon')->unique()->notNullable();
+            $table->string('razon')->notNullable();
             $table->string('direccion')->unsigned();
             $table->string('email')->unique();
             $table->string('celular')->unsigned();

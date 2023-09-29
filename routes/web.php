@@ -21,8 +21,8 @@ Route::get('descargas', 'App\Http\Controllers\HomeController@descargas')->name('
 Route::get('cuenta/{usuario}/productos', 'App\Http\Controllers\ProductoController@misproductos')->name('producto.misproductos');
 
 
- Route::get('/cuenta', 'App\Http\Controllers\ProductoController@Cuenta')->name('cliente.cuenta');
- Route::get('/misdatos', 'App\Http\Controllers\ProductoController@misdatos')->name('cliente.misdatos');
+Route::get('/cuenta', 'App\Http\Controllers\ProductoController@Cuenta')->name('cliente.cuenta');
+Route::get('/misdatos', 'App\Http\Controllers\ProductoController@misdatos')->name('cliente.misdatos');
 
 
 
@@ -30,13 +30,9 @@ Route::get('producto', 'App\Http\Controllers\ProductoController@index')->name('p
 
 Route::get('producto/crear','App\Http\Controllers\ProductoController@crear')->name('producto.crear');
 
-Route::post('producto','App\Http\Controllers\ProductoController@creacion_prod')->name('producto.creacion_prod');
+Route::post('producto','App\Http\Controllers\ProductoController@creacion_prod_usuario')->name('producto.creacion_prod');
 
 Route::get('producto/descripcion/{producto}', 'App\Http\Controllers\ProductoController@mostrar')->name('producto.mostrar');
-
-//rutas para la empresa
-
-Route::get('registro/empresa', 'App\Http\Controllers\EmpresaController@registro')->name('empresa.registro');
 
 //#####
 
@@ -107,6 +103,20 @@ Route::middleware(['admin.auth'])->group(function () {
     Route::post('panel/logout', 'App\Http\Controllers\AdminController@logout')->name('admin.logout');
 
 
+});
+
+//rutas para la empresa
+Route::get('registro/empresa', 'App\Http\Controllers\EmpresaController@registro')->name('empresa.registro');
+Route::post('registro/empresa', 'App\Http\Controllers\EmpresaController@creacion_empr')->name('empresa.creacion_empr');
+
+Route::middleware(['empresa.auth'])->group(function () {
+
+    Route::get('cuenta/empresa/{empresa}/productos', 'App\Http\Controllers\EmpresaController@misproductos')->name('empresa.misproductos');
+    Route::get('/cuenta/empresa', 'App\Http\Controllers\EmpresaController@micuenta')->name('empresa.cuenta');
+    Route::get('/misdatos/empresa', 'App\Http\Controllers\EmpresaController@misdatos')->name('empresa.misdatos');
+    Route::post('cuenta/empresa/logout', 'App\Http\Controllers\EmpresaController@logout')->name('empresa.logout');
+    Route::post('cuenta/empresa/producto','App\Http\Controllers\EmpresaController@creacion_prod_empresa')->name('producto.creacion_prod_empr');
+    Route::get('cuenta/empresa/producto/crear','App\Http\Controllers\EmpresaController@crearProdEmpresa')->name('producto.crearEmpresa');
 });
 
 //Msj

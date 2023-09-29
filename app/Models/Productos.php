@@ -25,6 +25,7 @@ class Productos extends Model
         'cantidad',
         'precio',
         'categoria',
+        'empresa_id',
         'user_id'
     ];
     public function carritos(){
@@ -45,9 +46,13 @@ class Productos extends Model
     {
         return $this->belongsTo(Categoria::class,'categoria')->withDefault();
     }
-    public function usuario()
-{
-    return $this->belongsTo(User::class, 'user_id');
-}
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'empresa_id');
+    }
 
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -71,13 +71,15 @@ class User extends Authenticatable
         return $this->admin_since != null
             && $this->admin_since->lessThanOrEqualTo(now());
     }
-    public function productos()
-    {
-    return $this->hasMany(Productos::class);
-    }
+
     public function chats(): BelongsToMany
     {
         return $this->belongsToMany(Chat::class);
+    }
+
+    public function productos()
+    {
+        return $this->hasMany(Productos::class, 'user_id');
     }
 
     public function messages(): HasMany

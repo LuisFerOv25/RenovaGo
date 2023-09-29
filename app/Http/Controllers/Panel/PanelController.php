@@ -19,8 +19,11 @@ class PanelController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        $user = User::count();
+        $productos = Productos::count();
+        return view('admin.dashboard', compact('user', 'productos'));
     }
+    
 
     public function usuario()
     {
@@ -117,5 +120,5 @@ class PanelController extends Controller
             return redirect()->route('panel.empresa')->withWarning("No se pudo eliminar la empresa {$empresa->nombre} debido a restricciones de clave externa.");
          }
     }
-    
+ 
 }
