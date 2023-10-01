@@ -3,25 +3,28 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\locationController;
 use App\Http\Requests\ProductoRequest;
 use App\Models\Empresa;
 use App\Models\Productos;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use GuzzleHttp\Client;
 
 class PanelController extends Controller
 {
-    public function __construct()
+     public function __construct()
     {
         $this->middleware('auth:admin');
-    }
+    }  
 
-    public function index()
+    public function index(Request $request)
     {
         $user = User::count();
         $productos = Productos::count();
-        return view('admin.dashboard', compact('user', 'productos'));
+        $data = $this->obtenerUbicacion($request);
+        return view('admin.dashboard', compact('user', 'productos','data'));
     }
     
 
@@ -119,6 +122,30 @@ class PanelController extends Controller
         }catch(QueryException $e) {
             return redirect()->route('panel.empresa')->withWarning("No se pudo eliminar la empresa {$empresa->nombre} debido a restricciones de clave externa.");
          }
+    }
+
+    public function obtenerUbicacion(Request $request)
+    {
+        $client = new Client();
+        $ipinfoResponse = $client->get('https://ipinfo.io/json');
+        
+        if ($ipinfoResponse->getStatusCode() == 200) {
+            $ipinfoData = json_decode($ipinfoResponse->getBody(), true);
+            $publicIp = $ipinfoData['ip'];
+            $ip = $publicIp;
+    
+            $response = $client->get("http://api.ipstack.com/{$ip}?access_key=0e2622e90987756024384bc6cf158deb");
+    
+            if ($response->getStatusCode() == 200) {
+                $data = json_decode($response->getBody(), true);
+               
+                return $data;
+            } else {
+                abort(404, 'Error al obtener la geolocalización');
+            }
+        } else {
+            abort(404, 'Error al obtener la IP pública');
+        }
     }
  
 }

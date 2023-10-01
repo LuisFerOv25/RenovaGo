@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegistrerController;
@@ -59,7 +60,7 @@ Route::resource('orden','App\Http\Controllers\OrdenController')->only(['create',
 
 Route::resource('orden.pago','App\Http\Controllers\OrdenPagoController')->only(['create','store']);
 
-Route::middleware(['admin.auth'])->group(function () {
+ Route::middleware(['admin.auth'])->group(function () {
 
     Route::resource('panel','App\Http\Controllers\Panel\PanelController')->only(['index']);
 
@@ -103,7 +104,7 @@ Route::middleware(['admin.auth'])->group(function () {
     Route::post('panel/logout', 'App\Http\Controllers\AdminController@logout')->name('admin.logout');
 
 
-});
+ });
 
 //rutas para la empresa
 Route::get('registro/empresa', 'App\Http\Controllers\EmpresaController@registro')->name('empresa.registro');
@@ -118,6 +119,7 @@ Route::middleware(['empresa.auth'])->group(function () {
     Route::post('cuenta/empresa/producto','App\Http\Controllers\EmpresaController@creacion_prod_empresa')->name('producto.creacion_prod_empr');
     Route::get('cuenta/empresa/producto/crear','App\Http\Controllers\EmpresaController@crearProdEmpresa')->name('producto.crearEmpresa');
 });
+
 
 //Msj
 Route::get('/chat', 'App\Http\Controllers\ChatController@showChat')->name('chat.show');

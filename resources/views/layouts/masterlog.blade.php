@@ -108,7 +108,8 @@
         });
           </script>
 
-        
+    <script id="dsq-count-scr" src="//renovago.disqus.com/count.js" async></script>
+
 
     </body>
         

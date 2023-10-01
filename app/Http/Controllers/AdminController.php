@@ -10,10 +10,10 @@ use Illuminate\Database\QueryException;
 
 class AdminController extends Controller
 {
-    public function __construct()
+     public function __construct()
     {
         $this->middleware('auth:admin');
-    }
+    } 
     
     public function mostrarAdmin()
     {
@@ -83,5 +83,6 @@ class AdminController extends Controller
         auth()->logout();
         return redirect()->route('cliente.login');
     }
+
 
 }
