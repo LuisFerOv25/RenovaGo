@@ -7,14 +7,13 @@
   <title>@yield('title') -  RenovaGo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/reg_producto.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
 </head>
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm bg-body-tertiary">
+          <nav class="navbar navbar-expand-sm bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{route('producto.index')}}">
                 <img src="{{ asset('static/logo.gif') }}" alt="Logo" width="30" height="24"
@@ -28,35 +27,28 @@
                 <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
                 <ul class="navbar-nav grid gap-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('producto.index')}}">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('home.index')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pedidos.html">Pedidos</a>
+                      <a class="nav-link" href="{{route('home.descargas')}}">Descargas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('cliente.cuenta')}}">Mi cuenta</a>
+                      <a class="nav-link" href="#">Acerca de</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item py-4">
 
-                        <a class="nav-link" href="{{route('carrito.index')}}"><i
-                                class="fas fa-shopping-cart"></i>
-                                @inject('carritoService', 'App\Services\CarritoService')
-                                {{$carritoService->contarProductos()}}
-                        </a>
+                      <a href="{{route('cliente.login')}}"><button type="button" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" class="btn btn-primary btn-sm">Iniciar Sesion</button></a>
                     </li>
-                    <li class="nav-item custom-nav-item">
-                        <form method="POST" action="{{route('cliente.logout')}}">
-                          @csrf
-                          <button type="submit" class="nav-link btn-sm">Cerrar sesión</button>
-                        </form>
+                    <li class="nav-item custom-nav-item py-4">
+                      <a href="{{route('cliente.registro')}}"><button type="button" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" class="btn btn-success btn-sm">Registrate</button></a>
+
                       </li>
 
                 </ul>
             </div>
             </div>
         </nav>
-        </header>
-        <br>
+          </header>
         @if (@isset($errors) && $errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -73,7 +65,7 @@
             </div>
                 
         @endif
-        <div id="notification" class="alert mx-3 invisible"></div>
+
         @yield('content')
         <footer>
             <p class="copyright text-center">2023 RenovaGo &copy Todos los derechos reservados</p>
@@ -82,11 +74,6 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <script id="dsq-count-scr" src="//renovago.disqus.com/count.js" async></script>
-    <script src="{{ asset('js/scroll.js') }}"></script>
-
-
     </body>
         
 </html>

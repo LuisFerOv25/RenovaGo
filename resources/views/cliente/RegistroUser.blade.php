@@ -32,6 +32,7 @@
 		<div class="form-container sign-in-container">
 			<form method="POST" action="{{route('cliente.autenticar')}}" enctype="multipart/form-data">
 				@csrf
+				<br>
 				<h3>Registrar usuario</h3>
 				<input type="text" name="cedula" placeholder="Cedula" value="{{old('cedula')}}"/>
 				<input type="text" name="nombre" placeholder="Nombres completos" value="{{old('nombre')}}"/>
@@ -49,11 +50,14 @@
 				<button  type="submit" >Registrate</button>
 				<br>
 				<span>Ya tienes cuenta ? <a class="a-en" href="{{route('cliente.login')}}">Iniciar sesión</a>.</span>
-				<br>
+			
 				<a>Al continuar, aceptas los Términos y Condiciones</a>
-
+				<br>
+				<br>
 			</form>
+			
 		</div>
+	
 	</div>
 
 	<footer>

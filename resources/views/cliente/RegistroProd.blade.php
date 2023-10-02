@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.masterlog')
 @section('title','Registrar producto')
 @section('content')  
 

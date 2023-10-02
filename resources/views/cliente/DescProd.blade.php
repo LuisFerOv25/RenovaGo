@@ -14,7 +14,7 @@
                     <div class="col-md-8">
                         <h5 class="card-title">{{$productos->nombre}}</h5>
                         <h4 class="precios" style="color: orangered;">$ {{$productos->precio}}</h4>
-                        <p class="card-text">
+                        <p class="descripcion card-text ">
                         <h6>{{$productos->descripcion}}
                         </h6>
                         </p>
@@ -45,7 +45,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <h5 class="text-center">Comentarios</h5>
         <br>
@@ -67,6 +66,7 @@
             (d.head || d.body).appendChild(s);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+
     </main>
     @endsection

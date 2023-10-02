@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-@extends('layouts.master')
+
+@extends('layouts.credencial')
 @section('title','Iniciar Sesion')
 @section('content')
 	<div class="container" id="container">
@@ -7,8 +7,9 @@
 		<div class="form-container sign-in-container">
 			<form method="POST" action="{{ route('cliente.inicioS') }}" class="submit-prevent-form">
 				@csrf
-				<h1>Iniciar Sesion</h1>
 				<br>
+				<h3><strong>Iniciar Sesion</strong></h3>
+				
 				<br>
 				<input id="email" type="email" placeholder="Correo" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
 				@error('email')
@@ -33,7 +34,7 @@
 						</div>
 					</div>
 				</div>
-				<br>
+				
 				<a><button type="submit"class="submit-prevent-button" >Entrar</button></a>
 				<br>
 				@if (Route::has('password.request'))
@@ -43,7 +44,7 @@
 				@endif
 				<span>Aún no tienes cuenta? <a class="a-en" href="{{route('cliente.registro')}}">Crear cuenta</a>.</span>
 				<span>Eres una empresa? <a class="a-en" href="{{route('empresa.registro')}}">Crear cuenta corporativa</a>.</span>
-				<br>
+				
 				<a>Al continuar, aceptas los Términos y Condiciones</a>
 
 			</form>

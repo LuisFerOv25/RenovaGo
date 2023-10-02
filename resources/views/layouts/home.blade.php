@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
-          <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24"
+          <img src="{{ asset('static/logo.gif') }}" alt="Logo" width="30" height="24"
             class="d-inline-block align-text-top">
           RenovaGo
         </a>

@@ -82,7 +82,7 @@ class User extends Authenticatable
         return $this->hasMany(Productos::class, 'user_id');
     }
 
-    public function messages(): HasMany
+    public function messages()
     {
         return $this->hasMany(Message::class);
     }

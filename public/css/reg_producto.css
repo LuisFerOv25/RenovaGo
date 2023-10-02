@@ -34,7 +34,7 @@ span {
 	font-size: 12px;
 }
 
-a,nav-item:button {
+a,custom-nav-item:button {
 	color: #333;
 	font-size: 10px;
 	text-decoration: none;
@@ -46,11 +46,10 @@ button {
 	border: 1px solid rgb(30, 58, 237);
 	background-color: rgb(30, 58, 237);
 	color: #FFFFFF;
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: bold;
 	padding: 12px 45px;
 	letter-spacing: 1px;
-	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
 
@@ -65,6 +64,10 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+}
+.custom-nav-item form{
+	background-color: transparent;
+
 }
 
 form {
@@ -257,4 +260,66 @@ span, a {
 
     padding: 20px;
     text-align: center;
+  }
+.card-style{
+	height: 400px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+}
+.card-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+  }
+  
+.descripcion {
+	max-height: 80px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+  }
+  .card-body {
+	padding: 10px;
+  }
+  .titulo-prod,
+.card-text,
+.precios {
+  margin-bottom: 5px; 
+}
+.titulo-prod{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+/* Estilos del carrito */
+.atras{
+    background: rgb(196, 189, 40);
+    border-radius: 12px;
+  }
+  .agregar{
+    background: rgb(30, 71, 244);
+    color: white;
+    border-radius: 12px;
+  }
+  .containe{
+    height: 400px; /* Establece la altura deseada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edita{
+    background: rgb(30, 71, 244);
+    color: white;
+    border-radius: 12px;
+  }
+  .navbar{
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	position: absolute;
+	top: 0; 
+	left: 0;
+	transition: top 0.3s;
   }
