@@ -120,8 +120,3 @@ Route::middleware(['empresa.auth'])->group(function () {
     Route::get('cuenta/empresa/producto/crear','App\Http\Controllers\EmpresaController@crearProdEmpresa')->name('producto.crearEmpresa');
 });
 
-
-//Msj
-Route::get('/chat', 'App\Http\Controllers\ChatController@showChat')->name('chat.show');
-Route::post('/chat/message', 'App\Http\Controllers\ChatController@messageReceived')->name('chat.message');
-Route::post('/chat/greet/{user}', 'App\Http\Controllers\ChatController@greetReceived')->name('chat.greet');

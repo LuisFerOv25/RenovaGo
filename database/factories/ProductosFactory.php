@@ -30,6 +30,7 @@ class ProductosFactory extends Factory
             'cantidad'=> $this->faker->numberBetween(1,100),
             'precio'=> $this->faker-> randomFloat($maxDecimal=2, $min = 3, $max= 100),
             'categoria' => $categoria->id,
+            'empresa_id' => $user_id
         ];
     }
 }

@@ -4,8 +4,9 @@
 
     <main>
         <div class="container mt-4">
-            <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary custom-button active" id="button1">Mis productos</button></a>
-            <a href="{{route('cliente.misdatos')}}"><button type="button" class="btn btn-primary custom-button" id="button2">Mis datos</button></a>
+            <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary btn-sm active" id="button1">Mis productos</button></a>
+            <a href="{{route('cliente.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
+            <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
         </div>
         <div class="page-section active" id="section1">
             <div class="container mt-4">

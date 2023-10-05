@@ -1000,7 +1000,7 @@ function getSharedPhotos(user_id) {
       $(".shared-photos-list").html(data.shared);
     },
     error: () => {
-      console.error("Server error, check your response");
+      console.error("Error del servidor, revisa tu respuesta");
     },
   });
 }

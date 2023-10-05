@@ -8,19 +8,19 @@ function dateStringToTimeAgo(dateString) {
   const date = new Date(dateString);
   const seconds = Math.floor((now - date) / 1000);
   const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
+  const horas = Math.floor(minutes / 60);
+  const days = Math.floor(horas / 24);
   const weeks = Math.floor(days / 7);
   if (seconds < 60) {
-    return "just now";
+    return "Justo ahora";
   } else if (minutes < 60) {
-    return `${minutes}m ago`;
-  } else if (hours < 24) {
-    return `${hours}h ago`;
+    return `${minutes}minuto(s)`;
+  } else if (horas < 24) {
+    return `${horas}hora(s)`;
   } else if (days < 7) {
-    return `${days}d ago`;
+    return `${days}dias(s)`;
   } else {
-    return `${weeks}w ago`;
+    return `${weeks}semana(s)`;
   }
 }
 /**
