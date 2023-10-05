@@ -9,6 +9,7 @@ use App\Models\Empresa;
 use App\Models\Image;
 use App\Models\Orden;
 use App\Models\Pago;
+use App\Models\PaymentPlatform;
 use App\Models\Productos;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(PaymentPlatformTable::class);
+        $this->call(CurrenciesTableSeeder::class);
+        
         $administrador = Admin::factory(20)->create();
 
         $categorias = [
