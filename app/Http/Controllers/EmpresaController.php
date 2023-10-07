@@ -29,12 +29,12 @@ class EmpresaController extends Controller
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('empresas'), // Validar la unicidad del correo electrónico en la tabla "users"
+                Rule::unique('empresas'), 
             ],
-            'password' => 'required|string|min:8|confirmed', // Asegurarse de que la contraseña coincida con la confirmación
+            'password' => 'required|string|min:8|confirmed', 
+            'image' => 'required'
         ]);
         if ($validator->fails()) {
-            // Si la validación falla, redirige de nuevo al formulario con los errores
             return redirect()->route('empresa.registro')
                 ->withErrors($validator)
                 ->withInput();
@@ -57,8 +57,8 @@ class EmpresaController extends Controller
     }
 
     public function misdatos(){
-        $empresa = Auth::empresa();
-    
+        $empresa = Auth::guard('empresa')->user();
+       
         return view('empresa.misdatos', ['empresa' => $empresa]);
        }
 
@@ -85,8 +85,21 @@ class EmpresaController extends Controller
         // Verificar si el usuario autenticado es un administrador
         if (Auth::guard('empresa')->check()) {
             $empresa = Auth::guard('empresa')->user();
-    
-            // Crear el producto relacionado con el administrador
+
+            $validator = Validator::make(request()->all(), [
+                'nombre' => 'required|max:120',
+                'descripcion' => 'required|string|max:255',
+                'cantidad' => 'required|integer',
+                'precio' => 'required',
+                'categoria' => 'required',
+                'images' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return redirect()->route('producto.crearEmpresa')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             $producto = Productos::create([
                 'nombre' => request()->nombre,
                 'descripcion' => request()->descripcion,

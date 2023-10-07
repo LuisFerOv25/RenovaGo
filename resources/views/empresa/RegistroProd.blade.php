@@ -1,14 +1,16 @@
 
-@extends('layouts.master')
+@extends('layouts.masterlogempr')
 @section('title','Registrar producto')
 @section('content')  
 
 
   <main>
-        <div class="container mt-4">
-            <a href="cuenta.html"><button type="button" class="btn btn-primary custom-button active" id="button1">Mis productos</button></a>
-            <a href="misdatos.html"><button type="button" class="btn btn-primary custom-button" id="button2">Mis datos</button></a>
-        </div>
+    <div class="container mt-4">
+        <a href="{{route('empresa.cuenta')}}"><button type="button" class="btn btn-primary btn-sm custom-button active" id="button1">Mis productos</button></a>
+        <a href="{{route('empresa.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
+        <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
+    
+    </div>
         <div class="page-section active" id="section1">
             <div class="container mt-4">
                 <h1>Cuenta</h1>

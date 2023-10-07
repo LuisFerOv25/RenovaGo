@@ -36,13 +36,14 @@ class AdminController extends Controller
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('admins'), // Validar la unicidad del correo electrónico en la tabla "users"
+                Rule::unique('admins'), 
+
             ],
+            'image' => 'required',
             'cargo' => 'required|string',
-            'password' => 'required|string|min:8|confirmed', // Asegurarse de que la contraseña coincida con la confirmación
+            'password' => 'required|string|min:8|confirmed',
         ]);
         if ($validator->fails()) {
-            // Si la validación falla, redirige de nuevo al formulario con los errores
             return redirect()->route('admin.regadmin')
                 ->withErrors($validator)
                 ->withInput();

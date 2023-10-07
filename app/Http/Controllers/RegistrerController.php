@@ -21,9 +21,10 @@ class RegistrerController extends Controller
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users'), // Validar la unicidad del correo electrónico en la tabla "users"
+                Rule::unique('users'),
             ],
-            'password' => 'required|string|min:8|confirmed', // Asegurarse de que la contraseña coincida con la confirmación
+            'password' => 'required|string|min:8|confirmed',
+            'image' => 'required'
         ]);
         if ($validator->fails()) {
             // Si la validación falla, redirige de nuevo al formulario con los errores
@@ -32,16 +33,6 @@ class RegistrerController extends Controller
                 ->withInput();
         }
         
-        // $reglas = [
-        //     'cedula' => 'required',
-        //     'nombre' => 'required|max:300',
-        //     'direccion' => 'required',
-        //     'email' => 'required|email',
-        //     'celular' => 'required|max:13',
-        //     'password' => 'required|confirmed',
-
-        // ];
-        // request()->validate($reglas);
         $usuario = User::create(request()->all());
         auth()->login($usuario);
         foreach ($request->images as $image) {

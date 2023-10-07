@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('celular')->unsigned();
             $table->string('password')->unsigned();
-            $table->timestamp('admin_since')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

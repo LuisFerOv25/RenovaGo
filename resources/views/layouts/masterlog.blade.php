@@ -76,8 +76,8 @@
         <div id="notification" class="alert mx-3 invisible"></div>
         @yield('content')
         <footer>
-            <p class="copyright text-center">2023 RenovaGo &copy Todos los derechos reservados</p>
-          </footer>
+            <p class="copyright text-center"><span id="year"></span> RenovaGo &copy Todos los derechos reservados</p>
+        </footer>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
@@ -86,6 +86,7 @@
     <script id="dsq-count-scr" src="//renovago.disqus.com/count.js" async></script>
     <script src="{{ asset('js/scroll.js') }}"></script>
 
+    <script src="{{ asset('js/footer_fecha.js') }}"></script>
 
     </body>
         

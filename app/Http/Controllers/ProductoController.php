@@ -10,6 +10,9 @@ use App\Models\Empresa;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 class ProductoController extends Controller
 {
     public function __construct(){
@@ -32,6 +35,21 @@ class ProductoController extends Controller
 
     public function creacion_prod_usuario(ProductoRequest $request){
         $usuario = Auth::user();
+
+        $validator = Validator::make(request()->all(), [
+            'nombre' => 'required|max:120',
+            'descripcion' => 'required|string|max:255',
+            'cantidad' => 'required|integer',
+            'precio' => 'required',
+            'categoria' => 'required',
+            'images' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('producto.crear')
+                ->withErrors($validator)
+                ->withInput();
+        }
+                
          $producto= Productos::create([
              'nombre' => request()->nombre,
              'descripcion' => request()->descripcion,

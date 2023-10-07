@@ -84,7 +84,7 @@ class MessagesController extends Controller
         if (Chatify::storage()->exists($filePath)) {
             return Chatify::storage()->download($filePath);
         }
-        return abort(404, "Sorry, File does not exist in our server or may have been deleted!");
+        return abort(404, "Lo siento, El archivo no se encuentra en nuestro servidor o ha sido borrado!");
     }
 
     /**

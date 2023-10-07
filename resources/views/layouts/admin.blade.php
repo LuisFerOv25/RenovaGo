@@ -340,7 +340,7 @@
 
             <!-- Footer -->
             <footer>
-                <p class="copyright">2023 RenovaGo &copy Todos los derechos reservados</p>
+                <p class="copyright text-center"><span id="year"></span> RenovaGo &copy Todos los derechos reservados</p>
             </footer>
             <!-- End of Footer -->
 
@@ -386,7 +386,7 @@
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-
+    <script src="{{ asset('js/footer_fecha.js') }}"></script>
 </body>
 
 </html>

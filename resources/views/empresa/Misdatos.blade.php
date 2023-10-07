@@ -4,11 +4,13 @@
 
     <main>
         <div class="container mt-4">
-            <a href="{{route('empresa.cuenta')}}"><button type="button" class="btn btn-primary custom-button active" id="button1">Mis productos</button></a>
-            <a href="{{route('empresa.misdatos')}}button type="button" class="btn btn-primary custom-button" id="button2">Mis datos</button></a>
+            <a href="{{route('empresa.cuenta')}}"><button type="button" class="btn btn-primary btn-sm custom-button active" id="button1">Mis productos</button></a>
+            <a href="{{route('empresa.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
+            <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
+        
         </div>
         <div class="container mt-4">
-            <h2><b>Hola julio juarez</b></h2>
+            <h2><b>Hola {{$empresa->nombre}}</b></h2>
         </div>
         <br>
 
@@ -16,7 +18,7 @@
             <div class="row">
                 <div class="col-4 py-1">
                     <h6><b>Foto de perfil</b></h6>
-                    <img src="{{asset($usuario->image->path)}}" class="img-fluid rounded-start" alt="..." width="70" height="40">
+                    <img src="{{asset($empresa->image->path)}}" class="img-fluid rounded-start" alt="..." width="70" height="40">
                 </div>
                 <div class="col-4">
                     <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html"><b>Quitar
@@ -30,7 +32,7 @@
             <div class="row">
                 <div class="col-6">
                     <h6><b>Nombre</b></h6>
-                    <h5>{{$usuario->nombre}}</h5>
+                    <h5>{{$empresa->nombre}}</h5>
                 </div>
                 <div class="col-6">
                     <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html"><b>Editar</b></a>

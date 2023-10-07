@@ -66,12 +66,13 @@
 
         @yield('content')
         <footer>
-            <p class="copyright text-center">2023 RenovaGo &copy Todos los derechos reservados</p>
-          </footer>
+          <p class="copyright text-center"><span id="year"></span> RenovaGo &copy Todos los derechos reservados</p>
+        </footer>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </body>
-        
+    <script src="{{ asset('js/footer_fecha.js') }}"></script>
+
 </html>
