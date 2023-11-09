@@ -63,12 +63,12 @@
                 </div>
             </div>
         </div>
-        @endif
+       
 
         <div class="mb-3 px-5 mx-5">
             <h6 class="text-start mx-3"><strong>Valor total: $ {{$carrito->total}}</strong></h6>
         </div>
-
+        @endif
         <div class="row text-center">
             <div class="col">
                 <button type="submit" class="btn btn-success">Atrás</button>

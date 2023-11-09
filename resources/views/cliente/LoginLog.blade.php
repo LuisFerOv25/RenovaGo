@@ -48,10 +48,9 @@
         @endforeach
       </div>
       <br>
-
-        <!-- BOTÓN VER MÁS -->
-        <div align="center">
-          <a class="btn btn-primary  btn-sm" href="" role=" button">Ver más</a>
+        <!-- PAGINACION-->
+        <div class="d-flex justify-content-center">
+          {{ $productos->links('pagination::bootstrap-4') }}
         </div>
         <br>
         <hr>

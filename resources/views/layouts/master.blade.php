@@ -13,39 +13,37 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm bg-body-tertiary">
-              <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
-                  <img src="{{ asset('static/logo.gif') }}" alt="Logo" width="30" height="24"
-                    class="d-inline-block align-text-top">
-                  RenovaGo
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
-                  <ul class="navbar-nav grid gap-3">
-                    <li class="nav-item py-3">
-                      <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item py-3">
-                      <a class="nav-link " href="descargas.html">Descargas</a>
-                    </li>
-                    <li class="nav-item py-3">
-                      <a class="nav-link" href="#">Acerca de</a>
-                    </li>
-                    <li class="nav-item py-4">
-                      <a href="login.html"><button type="button" class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Iniciar Sesion</button></a>
-                    </li>
-                    <li class="nav-item py-4">
-                      <a href="registrer.html"><button type="button" class="btn btn-success btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Registrate</button></a>
-        
-                    </li>
-                  </ul>
-                </div>
+          <nav class="navbar navbar-expand-sm bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">
+                <img src="{{ asset('static/logo.gif') }}" alt="Logo" width="30" height="24"
+                  class="d-inline-block align-text-top">
+                RenovaGo
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
+                <ul class="navbar-nav grid gap-3">
+                  <li class="nav-item py-3">
+                    <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item py-3">
+                    <a class="nav-link " href="descargas.html">Descargas</a>
+                  </li>
+
+                  <li class="nav-item py-4">
+                    <a href="login.html"><button type="button" class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Iniciar Sesion</button></a>
+                  </li>
+                  <li class="nav-item py-4">
+                    <a href="registrer.html"><button type="button" class="btn btn-success btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Registrate</button></a>
+      
+                  </li>
+                </ul>
               </div>
-            </nav>
+            </div>
+          </nav>
           </header>
         @if (@isset($errors) && $errors->any())
             <div class="alert alert-danger">

@@ -4,12 +4,12 @@
 
     <main>
         <div class="container mt-4">
-            <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary btn-sm active" id="button1">Mis productos</button></a>
+            <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary btn-sm active" id="button1">Inicio</button></a>
             <a href="{{route('cliente.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
-            <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
+            <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a>
         </div>
         <div class="container mt-4">
-            <h2><b>Hola julio juarez</b></h2>
+            <h2><b>Hola {{$usuario->nombre}}</b></h2>
         </div>
         <br>
 
@@ -17,15 +17,35 @@
             <div class="row">
                 <div class="col-4 py-1">
                     <h6><b>Foto de perfil</b></h6>
-                    <img src="{{asset($usuario->image->path)}}" class="img-fluid rounded-start" alt="..." width="70" height="40">
+                    @if ($usuario->image)
+                        <img src="{{ asset($usuario->image->path) }}" class="img-fluid rounded-start" alt="..." width="70" height="40">
+                    @else
+                        <span>Sin foto</span>
+                    @endif
                 </div>
+
                 <div class="col-4">
-                    <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html"><b>Quitar
-                            foto</b></a>
+                    <div class="row">
+                        <p class="nav-link active borde-btn-inicio" aria-current="page"><b>Eliminar Foto</b></p>
+
+                    </div>
+                    <div class="row">
+                    <form action="{{ route('misdatos.usuario.eliminar', ['usuario' => $usuario->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        @if ($usuario->image)
+                            <button type="submit" class="btn btn-primary btn-sm btn-danger" role="button"><i class="fas fa-fw fa-trash"></i></button>
+                        @else
+                            <button type="button" class="btn btn-primary btn-sm btn-danger" role="button" disabled><i class="fas fa-fw fa-trash"></i></button>
+                        @endif
+                    </form>
                 </div>
+                </div>
+        
+            
                 <div class="col-4">
-                    <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html"><b>Cambiar
-                            foto</b></a>
+                    <p class="nav-link active borde-btn-inicio" aria-current="page"><b>Cambiar
+                            foto</b></p>
                 </div>
             </div>
             <div class="row">
@@ -34,7 +54,12 @@
                     <h5>{{$usuario->nombre}}</h5>
                 </div>
                 <div class="col-6">
-                    <a class="nav-link active borde-btn-inicio" aria-current="page" href="index.html"><b>Editar</b></a>
+                    <form action="{{ route('usuario.agregar-imagen', ['usuario' => $usuario->id]) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" class="btn btn-sm" name="imagen" accept="image/*">
+                        <button type="submit" class="btn btn-sm edita">Agregar Imagen</button>
+                    </form>
+                    
                 </div>
             </div>
         </div>

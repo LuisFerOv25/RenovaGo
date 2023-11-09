@@ -32,7 +32,7 @@ class EmpresaController extends Controller
                 Rule::unique('empresas'), 
             ],
             'password' => 'required|string|min:8|confirmed', 
-            'image' => 'required'
+            'images' => 'required'
         ]);
         if ($validator->fails()) {
             return redirect()->route('empresa.registro')
@@ -62,13 +62,21 @@ class EmpresaController extends Controller
         return view('empresa.misdatos', ['empresa' => $empresa]);
        }
 
-    public function misproductos($id){
-
+       public function todosmisprodempr($id){
+   
         $empresa = Empresa::find($id);
         $productos = $empresa->productos;
     
         return view('empresa.misproductos', ['empresa' => $empresa, 'productos' => $productos]);
     }
+
+    public function misproductosempr($id,$categoria){
+   
+    $empresa = Empresa::find($id);
+    $productos = $empresa->productos->where('categoria', $categoria);
+
+    return view('empresa.misproductos', ['empresa' => $empresa, 'productos' => $productos]);
+     }
     public function logout(){
         Auth::guard('empresa')->logout();
 

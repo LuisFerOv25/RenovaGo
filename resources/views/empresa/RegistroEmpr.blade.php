@@ -10,12 +10,6 @@
 
 <body>        
 	
-	<div class="container mt-4">
-		<a href="{{route('empresa.cuenta')}}"><button type="button" class="btn btn-primary btn-sm custom-button active" id="button1">Mis productos</button></a>
-		<a href="{{route('empresa.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
-		<a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
-
-	</div>
 
 		@if (@isset($errors) && $errors->any())
 		<div class="alert alert-danger">

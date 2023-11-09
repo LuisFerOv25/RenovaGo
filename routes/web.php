@@ -19,21 +19,25 @@ use App\Http\Controllers\ProductoCarritoController;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('descargas', 'App\Http\Controllers\HomeController@descargas')->name('home.descargas');
-Route::get('cuenta/{usuario}/productos', 'App\Http\Controllers\ProductoController@misproductos')->name('producto.misproductos');
+Route::get('cuenta/{usuario}/productos', 'App\Http\Controllers\ProductoController@todosmisprod')->name('producto.todosmisprod');
+Route::get('cuenta/{usuario}/{categoria}/productos', 'App\Http\Controllers\ProductoController@misproductos')->name('producto.misproductos');
 
 
 Route::get('/cuenta', 'App\Http\Controllers\ProductoController@Cuenta')->name('cliente.cuenta');
 Route::get('/misdatos', 'App\Http\Controllers\ProductoController@misdatos')->name('cliente.misdatos');
+Route::delete('/misdatos/{usuario}','App\Http\Controllers\RegistrerController@destroyimage')->name('misdatos.usuario.eliminar');
+Route::post('/usuario/{usuario}/agregar-imagen', 'App\Http\Controllers\RegistrerController@agregarImagen')->name('usuario.agregar-imagen');
 
 
 
-Route::get('producto', 'App\Http\Controllers\ProductoController@index')->name('producto.index')->middleware('auth');
+Route::get('producto', 'App\Http\Controllers\ProductoController@index')->name('producto.index');
 
 Route::get('producto/crear','App\Http\Controllers\ProductoController@crear')->name('producto.crear');
 
 Route::post('producto','App\Http\Controllers\ProductoController@creacion_prod_usuario')->name('producto.creacion_prod');
 
 Route::get('producto/descripcion/{producto}', 'App\Http\Controllers\ProductoController@mostrar')->name('producto.mostrar');
+Route::get('producto/pedidos','App\Http\Controllers\ProductoController@pedido')->name('producto.pedido');
 
 //#####
 
@@ -112,7 +116,8 @@ Route::post('registro/empresa', 'App\Http\Controllers\EmpresaController@creacion
 
 Route::middleware(['empresa.auth'])->group(function () {
 
-    Route::get('cuenta/empresa/{empresa}/productos', 'App\Http\Controllers\EmpresaController@misproductos')->name('empresa.misproductos');
+    Route::get('cuenta/empresa/{empresa}/{categoria}/productos', 'App\Http\Controllers\EmpresaController@misproductosempr')->name('empresa.misproductosempr');
+    Route::get('cuenta/empresa/{empresa}/productos', 'App\Http\Controllers\EmpresaController@todosmisprodempr')->name('empresa.todosmisprodempr');
     Route::get('/cuenta/empresa', 'App\Http\Controllers\EmpresaController@micuenta')->name('empresa.cuenta');
     Route::get('/misdatos/empresa', 'App\Http\Controllers\EmpresaController@misdatos')->name('empresa.misdatos');
     Route::post('cuenta/empresa/logout', 'App\Http\Controllers\EmpresaController@logout')->name('empresa.logout');

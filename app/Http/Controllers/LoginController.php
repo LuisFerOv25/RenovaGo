@@ -27,18 +27,16 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
     
         if (Auth::guard('admin')->attempt($credentials)) {
-            // Iniciar sesión como administrador
+     
             return redirect()->route('panel.index');
         } elseif (Auth::guard('web')->attempt($credentials)) {
-            // Iniciar sesión como usuario regular
+          
             return redirect()->route('producto.index');
         }elseif (Auth::guard('empresa')->attempt($credentials)) {
-            // Iniciar sesión como usuario regular
+            
             return redirect()->route('empresa.cuenta');
         }
         
-    
-        // Si no se puede iniciar sesión, redirigir de nuevo a la página de inicio de sesión con un mensaje de error
         return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
             'email' => 'Credenciales incorrectas.',
         ]);

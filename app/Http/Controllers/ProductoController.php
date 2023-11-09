@@ -8,6 +8,7 @@ use App\Http\Requests\ProductoRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use App\Models\User;
+use App\Services\CarritoService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -15,15 +16,15 @@ use Illuminate\Validation\Rule;
 
 class ProductoController extends Controller
 {
+    public $carritoService;
+
     public function __construct(){
         $this->middleware('auth');
     }
 
     public function index(){
-        
-        return view('cliente.LoginLog')->with([
-            'productos' => Productos::all(),
-        ]);
+        $productos = Productos::paginate(20);
+        return view('cliente.LoginLog',compact('productos'));
     }
     public function crear(){
         $usuario = Auth::user();
@@ -65,7 +66,7 @@ class ProductoController extends Controller
                 'path' => 'images/' . $image->store('productos', 'images'),
             ]);
         }
-        return redirect()->route('producto.index')->withSuccess("El producto {$producto->nombre} ha sido creado");
+        return redirect()->route('cliente.cuenta')->withSuccess("El producto {$producto->nombre} ha sido creado");
     }
 
 
@@ -77,10 +78,18 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function misproductos($id){
+    public function todosmisprod($id){
+   
+        $usuario = User::find($id);
+        $productos = $usuario->productos;
+    
+        return view('cliente.misproductos', ['usuario' => $usuario, 'productos' => $productos]);
+    }
 
+    public function misproductos($id,$categoria){
+   
     $usuario = User::find($id);
-    $productos = $usuario->productos;
+    $productos = $usuario->productos->where('categoria', $categoria);
 
     return view('cliente.misproductos', ['usuario' => $usuario, 'productos' => $productos]);
      }
@@ -113,4 +122,8 @@ class ProductoController extends Controller
 
     return view('cliente.misdatos', ['usuario' => $usuario]);
    }
+   public function pedido(){
+    return view('cliente.pedidos');
+  
+}
 }

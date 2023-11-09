@@ -31,9 +31,6 @@
                         <a class="nav-link active" aria-current="page" href="{{route('empresa.cuenta')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('empresa.misproductos',['empresa' => $empresa->id])}}">Mis productos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{route('empresa.cuenta')}}">Mi cuenta</a>
                     </li>
                     <li class="nav-item">

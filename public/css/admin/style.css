@@ -26,4 +26,8 @@ footer i {
     color: red;
 }
 
-
+.pagination a,
+.pagination span {
+    font-size: 14px; /* Ajusta el tamaño de fuente según tus necesidades */
+    padding: 4px 8px; /* Ajusta el relleno según tus necesidades */
+}

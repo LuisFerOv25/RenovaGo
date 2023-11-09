@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Orden;
 use App\Models\Pago;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 use App\Services\CarritoService;
 
@@ -31,7 +32,7 @@ class OrdenPagoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Orden $orden)
+    public function store(Request $request, Orden $orden,Productos $producto)
     {
         $this->carritoService->getFromCookie()->productos()->detach();
         $orden->pago()->create(
@@ -42,6 +43,7 @@ class OrdenPagoController extends Controller
             );
             $orden->estado = 'pagado';
             $orden->save();
+            $producto->delete();
             return redirect()->route('producto.index')->withSuccess(
                 "Gracias, el pago por \${$orden->total} se ha realizado con exíto"
             );

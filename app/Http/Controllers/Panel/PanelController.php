@@ -23,32 +23,28 @@ class PanelController extends Controller
     {
         $user = User::count();
         $productos = Productos::count();
+        $empresas = Empresa::count();
         $data = $this->obtenerUbicacion($request);
-        return view('admin.dashboard', compact('user', 'productos','data'));
+        return view('admin.dashboard', compact('user', 'productos','data','empresas'));
     }
     
 
     public function usuario()
     {
-        $usuarios = User::all();
+        $usuarios = User::paginate(10);
         
-        return view('admin.usuarios_admin', [
-            'usuarios' => $usuarios,
-        ]);
+        return view('admin.usuarios_admin',compact('usuarios'));
     }
 
     public function empresa()
     {
-        $empresa = Empresa::all();
-        return view('admin.empresas_admin')->with([
-            'empresas' => $empresa,
-
-        ]);
+        $empresas = Empresa::paginate(10);
+        return view('admin.empresas_admin',compact('empresas'));
     }
 
     public function producto()
     {
-        $productos = Productos::with('categoria')->get();
+        $productos = Productos::with('categoria')->paginate(10);
         return view('admin.productos_admin', compact('productos'));
     }
     public function editar( Productos $producto){

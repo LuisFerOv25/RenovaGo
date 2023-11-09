@@ -31,7 +31,7 @@
                         <a class="nav-link active" aria-current="page" href="{{route('producto.index')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pedidos.html">Pedidos</a>
+                        <a class="nav-link" href="{{route('producto.pedido')}}">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('cliente.cuenta')}}">Mi cuenta</a>

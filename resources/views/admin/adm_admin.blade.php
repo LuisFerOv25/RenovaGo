@@ -30,6 +30,7 @@
                                                 <th>Celular</th>
                                                 <th>Direccion</th>
                                                 <th>Correo</th>
+                                                <th>Cargo</th>
                                                 <th>Editar</th>
                                                 <th>Eliminar</th>
                                             </tr>
@@ -64,5 +65,11 @@
                         </div>
                     @endempty
                 </div>
-                <!-- /.container-fluid -->
+                <br>
+                <!-- PAGINACION-->
+                <div class="d-flex justify-content-center">
+                  {{ $admin->links('pagination::bootstrap-4') }}
+                </div>
+                <br>
+                <br>
 @endsection

@@ -41,7 +41,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Empresas registradas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">215000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$empresas}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
+use App\Models\Empresa;
 use App\Models\User;
 use App\Models\ChMessage as Message;
 use App\Models\ChFavorite as Favorite;
@@ -40,15 +41,19 @@ class MessagesController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index( $id = null)
+    public function index($id = null)
     {
-        $messenger_color = Auth::user()->messenger_color;
+            $messengerColor = Auth::user()->messenger_color;
+            $darkMode = Auth::user()->dark_mode < 1 ? 'light' : 'dark';
+        
+    
         return view('Chatify::pages.app', [
             'id' => $id ?? 0,
-            'messengerColor' => $messenger_color ? $messenger_color : Chatify::getFallbackColor(),
-            'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
+            'messengerColor' => $messengerColor ? $messengerColor : Chatify::getFallbackColor(),
+            'dark_mode' => $darkMode,
         ]);
     }
+    
 
 
     /**

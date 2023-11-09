@@ -15,7 +15,7 @@
         <header>
           <nav class="navbar navbar-expand-sm bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{route('producto.index')}}">
+                <a class="navbar-brand" href="{{route('home.index')}}">
                 <img src="{{ asset('static/logo.gif') }}" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 RenovaGo
@@ -32,9 +32,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{route('home.descargas')}}">Descargas</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Acerca de</a>
-                    </li>
+
                     <li class="nav-item py-4">
 
                       <a href="{{route('cliente.login')}}"><button type="button" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" class="btn btn-primary btn-sm">Iniciar Sesion</button></a>
@@ -43,7 +41,6 @@
                       <a href="{{route('cliente.registro')}}"><button type="button" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" class="btn btn-success btn-sm">Registrate</button></a>
 
                       </li>
-
                 </ul>
             </div>
             </div>

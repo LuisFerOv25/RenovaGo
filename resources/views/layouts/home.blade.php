@@ -33,9 +33,7 @@
             <li class="nav-item">
               <a class="nav-link " href="{{route('home.descargas')}}">Descargas</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Acerca de</a>
-            </li>
+
             <li class="nav-item py-3">
               <a href="{{route('cliente.login')}}"><button type="button" class="btn btn-primary btn-sm">Iniciar Sesion</button></a>
             </li>

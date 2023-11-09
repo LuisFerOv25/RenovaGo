@@ -65,4 +65,11 @@
 
                 </div>
                 <!-- /.container-fluid -->
+                <br>
+                <!-- PAGINACION-->
+                <div class="d-flex justify-content-center">
+                  {{ $productos->links('pagination::bootstrap-4') }}
+                </div>
+                <br>
+                <br>
 @endsection

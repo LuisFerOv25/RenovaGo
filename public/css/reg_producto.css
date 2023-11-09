@@ -70,6 +70,11 @@ button.ghost {
 
 }
 
+.row form{
+	background-color: transparent;
+
+}
+
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -322,4 +327,40 @@ span, a {
 	top: 0; 
 	left: 0;
 	transition: top 0.3s;
+	z-index: 1000; 
   }
+  .ped-tam{
+	max-width: 1300px;
+  }
+  .no-underline {
+    text-decoration: none;
+}
+
+  @media screen and (max-width: 420px) {
+	.navbar {
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+		width: 100%;
+		position: fixed; /* Cambiado de 'absolute' a 'fixed' */
+		top: 0;
+		left: 0;
+		transition: top 0.3s;
+		z-index: 1000; /* Asegura que el navbar esté en la parte superior */
+	}
+	.ped-tam{
+		max-width: 420px;
+	  }
+	  .tarjeta {
+		display: flex;
+		flex-direction: column;
+	  }
+	.fil{
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+	
+  }
+  .pagination a,
+.pagination span {
+    font-size: 14px; /* Ajusta el tamaño de fuente según tus necesidades */
+    padding: 4px 8px; /* Ajusta el relleno según tus necesidades */
+}

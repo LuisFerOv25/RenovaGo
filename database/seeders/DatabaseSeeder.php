@@ -23,8 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PaymentPlatformTable::class);
-        $this->call(CurrenciesTableSeeder::class);
+
         
         $administrador = Admin::factory(20)->create();
 

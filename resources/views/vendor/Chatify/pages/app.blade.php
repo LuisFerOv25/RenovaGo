@@ -22,7 +22,7 @@
                 <a class="nav-link active" aria-current="page" href="{{route('producto.index')}}">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pedidos.html">Pedidos</a>
+                <a class="nav-link" href="{{route('producto.pedido')}}">Pedidos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('cliente.cuenta')}}">Mi cuenta</a>
@@ -50,9 +50,9 @@
 <br>
   <main>
     <div class="container">
-        <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary btn-sm active" id="button1">Mis productos</button></a>
+        <a href="{{route('cliente.cuenta')}}"><button type="button" class="btn btn-primary btn-sm active" id="button1">Inicio</button></a>
         <a href="{{route('cliente.misdatos')}}"><button type="button" class="btn btn-primary btn-sm custom-button" id="button2">Mis datos</button></a>
-        <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a> 
+        <a href="{{route('chatify')}}"><button type="button" class="btn btn-success btn-sm custom-button" id="button3">Centro de mensajeria</button></a>
     </div>
 <br>
     @include('Chatify::layouts.headLinks')

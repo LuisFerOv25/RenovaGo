@@ -17,11 +17,9 @@ class AdminController extends Controller
     
     public function mostrarAdmin()
     {
-        $admins = Admin::all();
+        $admin = Admin::paginate(10);
         
-        return view('admin.adm_admin', [
-            'admin' => $admins,
-        ]);
+        return view('admin.adm_admin',compact('admin'));
     }
 
 
