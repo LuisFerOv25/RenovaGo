@@ -1,34 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('content')  
 
     <main>
-        <div class="container mt-4">
-            <a href="cuenta.html"><button type="button" class="btn btn-primary custom-button active" id="button1">Mis productos</button></a>
-            <a href="misdatos.html"><button type="button" class="btn btn-primary custom-button" id="button2">Mis datos</button></a>
-        </div>
         <div class="page-section active" id="section1">
-            <div class="container mt-4">
-                <h1>Cuenta</h1>
-            </div>
-
-            <div class="container mt-4">
-                <h2><b>Hola julio juarez</b></h2>
-            </div>
-            <br>
             <div class="conte">
 
 
                 <div class="contenedor" id="contenedor">
 
-                    <div class="form-container sign-in-container">
+                    <div class="form-container sign-in-container p-5">
                         <form method="POST" action="{{route('panel.empr.actualizar',['empresa' =>$empresa->id])}}">
                              @csrf
                              @method('PUT')
+                             <div class="text-center">
                             <h4>Editar empresa</h4>
+                             </div>
                             <br>
                             <input type="text" name="nombre" placeholder="Nit" value="{{old('nit') ?? $empresa->nit}}" />
                             <input type="text" name="nombre" placeholder="Nombre del empresa" value="{{old('nombre') ?? $empresa->nombre}}" />

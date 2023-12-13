@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('content')  
 
     <main>
-        <div class="container mt-4">
-            <a href="cuenta.html"><button type="button" class="btn btn-primary custom-button active" id="button1">Mis productos</button></a>
-            <a href="misdatos.html"><button type="button" class="btn btn-primary custom-button" id="button2">Mis datos</button></a>
-        </div>
-        <div class="page-section active" id="section1">
-            <div class="container mt-4">
-                <h1>Cuenta</h1>
-            </div>
 
-            <div class="container mt-4">
-                <h2><b>Hola julio juarez</b></h2>
-            </div>
+        <div class="page-section active" id="section1">
+
             <br>
             <div class="conte">
 
 
                 <div class="contenedor" id="contenedor">
 
-                    <div class="form-container sign-in-container">
+                    <div class="form-container sign-in-container p-5">
                         <form method="POST" action="{{route('panel.prod.actualizar',['producto' =>$producto->id])}}">
                              @csrf
                              @method('PUT')

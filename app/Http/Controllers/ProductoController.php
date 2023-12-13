@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
+use App\Models\Pago;
 use App\Models\User;
 use App\Services\CarritoService;
 use Illuminate\Support\Facades\Auth;
@@ -122,8 +123,21 @@ class ProductoController extends Controller
 
     return view('cliente.misdatos', ['usuario' => $usuario]);
    }
-   public function pedido(){
-    return view('cliente.pedidos');
+   public function obtenerPedidosDeProducto(Productos $producto)
+   {
+       // Obtener los IDs de las órdenes que contienen el producto específico
+       $idsOrdenes = $producto->ordens()->pluck('id');
+   
+       // Obtener los pagos asociados a esas órdenes
+       $pagos = Pago::whereIn('id_orden', $idsOrdenes)->get();
+   
+       // Ahora, $pagos contiene los pagos asociados al producto
+       return $pagos;
+   }
+   public function pedido(Productos $producto){
+    return view('cliente.pedidos')->with([
+        'productos' => $producto,
+    ]);
   
 }
 }

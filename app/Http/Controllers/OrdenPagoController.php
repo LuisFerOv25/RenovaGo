@@ -44,6 +44,7 @@ class OrdenPagoController extends Controller
             $orden->estado = 'pagado';
             $orden->save();
             $producto->delete();
+            $producto->decrement('cantidad', 1);
             return redirect()->route('producto.index')->withSuccess(
                 "Gracias, el pago por \${$orden->total} se ha realizado con exíto"
             );

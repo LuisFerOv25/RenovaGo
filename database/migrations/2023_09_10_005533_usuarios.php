@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table){
             $table->id();
             $table->string('cedula')->unique()->notNullable();
-            $table->string('nombre',400);
-            $table->string('direccion')->unsigned();
+            $table->string('nombre');
+            $table->string('direccion');
             $table->string('email')->unique();
-            $table->string('celular')->unsigned();
-            $table->string('password')->unsigned();
+            $table->string('celular');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 

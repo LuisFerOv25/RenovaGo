@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductoCarritoController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+*/cuebta/
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('descargas', 'App\Http\Controllers\HomeController@descargas')->name('home.descargas');
@@ -37,7 +37,7 @@ Route::get('producto/crear','App\Http\Controllers\ProductoController@crear')->na
 Route::post('producto','App\Http\Controllers\ProductoController@creacion_prod_usuario')->name('producto.creacion_prod');
 
 Route::get('producto/descripcion/{producto}', 'App\Http\Controllers\ProductoController@mostrar')->name('producto.mostrar');
-Route::get('producto/pedidos','App\Http\Controllers\ProductoController@pedido')->name('producto.pedido');
+Route::get('producto/pedidos','App\Http\Controllers\PedidoController@pedido')->name('producto.pedido');
 
 //#####
 

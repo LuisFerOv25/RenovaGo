@@ -1,0 +1,19 @@
+El Proyecto Laravel lo puede ejecutar utilizando los comandos al mismo tiempo pero en diferentes terminales
+php artisan serve
+npm run dev
+php artisan websockets:serve
+
+El proyecto se ejecuta usando la base de datos sqlite en la ruta
+database\database.sqlite , por lo cual no es necesario realizar ninguna importacion a MySQL.
+Puede explorar la informacion de la base de datos usando DBeaver
+Credenciales de acceso de prueba para los roles
+
+-Usuario:
+email:carlosgomez35@gmail.com
+clave:11111111
+-Empresa:
+email:axacolalimentos@axa.com
+clave:11111111
+-Administrador: 
+email:luisov25@admin.com
+clave:11111111

@@ -8,7 +8,7 @@
         <div class="container">
             <div class="mb-3" style=" max-width: 1300px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-4 px-5">
                         <img src="{{asset($productos->images->first()->path)}}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
@@ -20,17 +20,9 @@
                         </p>
 
                         <div class="py-1">
-                            <button type="submit" class="btn btn-primary"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                -
-                            </button>
-
+                            <h6>Cantidad</h6>
                             <input class="form-control-sm cant" type="text" style="width: 130px; height: 35px;" value="{{$productos->cantidad}}">
 
-                            <button type="submit" class="btn btn-primary"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                +
-                            </button>
                             <form action="{{route('producto.carrito.store',['producto' => $productos->id])}}" method="POST">
                                 @csrf
                                 

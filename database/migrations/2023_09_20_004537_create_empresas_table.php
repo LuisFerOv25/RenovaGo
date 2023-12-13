@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->string('nit')->unique()->notNullable();
-            $table->string('nombre',420);
+            $table->string('nombre');
             $table->string('razon')->notNullable();
-            $table->string('direccion')->unsigned();
+            $table->string('direccion');
             $table->string('email')->unique();
-            $table->string('celular')->unsigned();
-            $table->string('password')->unsigned();
+            $table->string('celular');
+            $table->string('password');
             $table->timestamp('admin_since')->nullable();
             $table->rememberToken();
             $table->timestamps();
